@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+    <html>
+
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Page Title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+<style>
+  #footer  {
+    background-color: black;
+    color: gold;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    padding: 25px;
+}
+</style>
+    </head>
+
+    <body>
+    	<div class="container">
+    <div class="jumbotron">
+      <h1 class="text-center"><span class="glyphicon glyphicon-envelope"></span> Friend Finder</h1>
+      <hr>
+      <h2 class="text-center">Answer a Few Basic Questions</h2>
+      <h2 class="text-center">Then find the friend with the greatest compatibility!</h2>
+      <br> <br>
+      <div class="text-center">
+        <a href="add"><button type="button" class="btn btn-lg btn-danger"><span class="glyphicon glyphicon-folder-open"></span> Go To Survey</button></a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-2"> 
+        <a href="add"><button type="button" class="btn btn-xs btn-danger">API Friends List</button></a> 
+      </div>
+      <div class="col-lg-2"> 
+        <a href="add"><button type="button" class="btn btn-xs btn-danger">Github Repo</button></a> 
+      </div>
+    </div>
+
+    <br> <br> <br>
+
+    <!--sticky footer-->
+    <div class="push"></div>
+
+    <!--my footer.-->
+    <footer>
+        <div class="container" id="footerA" style="color: gold">
+            Copyright &copy; 2017 Paul Schaller
+        </div>
+    </footer>
+
+
+
+<script type="text/javascript">
+    var numWaitList = 0;
+    var arrWaitList = [];
+    var numReservation = 0;
+    var arrReservation = [];
+
+    $.get("/api/reservation", function (data) {
+        console.log(data);
+        console.log(data.length);
+        if (data) {
+            $("#tableuse").show();
+            for (var i = 0; i < data.length; i++) {
+                var div = $("<div>");
+                var span1 = $("<span>");
+                div.addClass("well h2");
+                div.attr("id", "tableWell-0" + i + 1)
+
+                var span = $("<span>");
+                span.addClass("label").addClass("label-primary");
+                span.html(i+1);
+                span1.text(data[i].nameId);
+                span.append(" | " + span1);
+                div.append(span)
+                $("#tableuse").append(div);
+                arrReservation.push(data[i]);
+            }
+        }
+    });
+
+    $.get("/api/waitList", function (data) {
+        console.log(data);
+        console.log(data.length);
+        if (data) {
+            $("#waitlist").show();
+            for (var i = 0; i < data.length; i++) {
+                var div = $("<div>");
+                var h2 = $("<h2>");
+                div.addClass("well");
+                div.attr("id", "tableWell-0" + i + 1)
+
+                var span = $("<span>");
+                span.addClass("label").addClass("label-primary");
+                span.html(i+1);
+                h2.text(" | " + data[i].nameId);
+                h2.append(span)
+                div.append(h2)
+                $("#waitlist").append(div);
+                arrWaitList.push(data[i]);
+            }
+        }
+    });
+
+    $(".submit").click(function () {
+        event.preventDefault();
+        var newReservation = {
+            dinerName: $("#reserve-name").val().trim(),
+            phoneNumber: $("#reserve-phone").val().trim(),
+            email: $("#reserve-email").val().trim(),
+            nameId: $("#reserve-unique-id").val().trim().replace(/\s+/g, "").toLowerCase()
+        };
+        console.log(arrReservation);
+        console.log(arrWaitList);
+        if (arrReservation < 5) {
+            $.post("/api/addReservation", newReservation)
+                .then(function (data) {
+                    console.log(data);
+                    alert("Adding reservation...");
+                });
+        } else {
+            $.post("/api/addWaitList", newReservation)
+                .then(function (data) {
+                    console.log(data);
+                    alert("Adding waitlist...");
+                });
+        }
+        // Question: What does this code do??
+
+    })
+</script>
+
+
+    </body>
+
+    </html>
