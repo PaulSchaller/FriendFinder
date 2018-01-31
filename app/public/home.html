@@ -32,18 +32,16 @@
       <h2 class="text-center">Then find the friend with the greatest compatibility!</h2>
       <br> <br>
       <div class="text-center">
-        <a href="add"><button type="button" class="btn btn-lg btn-danger"><span class="glyphicon glyphicon-folder-open"></span> Go To Survey</button></a>
+        <a href="/survey"><button type="button" class="btn btn-lg btn-danger"><span class="glyphicon glyphicon-folder-open"></span> Go To Survey</button></a>
       </div>
     </div>
     <div class="row">
       <div class="col-lg-2"> 
-        <a href="add"><button type="button" class="btn btn-xs btn-danger">API Friends List</button></a> 
+        <a href="/api/friends"><button type="button" class="btn btn-xs btn-danger">API Friends List</button></a> 
       </div>
-      <div class="col-lg-2"> 
         <a href="https://github.com/PaulSchaller/FriendFinder.git"><button type="button" class="btn btn-xs btn-danger">Github Repo</button></a> 
       </div>
     </div>
-
     <br> <br> <br>
 
     <!--sticky footer-->
@@ -56,113 +54,6 @@
         </div>
     </footer>
 
-
-
-<script type="text/javascript">
-    var numWaitList = 0;
-    var arrWaitList = [];
-    var numReservation = 0;
-    var arrReservation = [];
-
-    $.get("/api/reservation", function (data) {
-        console.log(data);
-        console.log(data.length);
-        if (data) {
-            $("#tableuse").show();
-            for (var i = 0; i < data.length; i++) {
-                var div = $("<div>");
-                var span1 = $("<span>");
-                div.addClass("well h2");
-                div.attr("id", "tableWell-0" + i + 1)
-
-                var span = $("<span>");
-                span.addClass("label").addClass("label-primary");
-                span.html(i+1);
-                span1.text(data[i].nameId);
-                span.append(" | " + span1);
-                div.append(span)
-                $("#tableuse").append(div);
-                arrReservation.push(data[i]);
-            }
-        }
-    });
-
-    $.get("/api/waitList", function (data) {
-        console.log(data);
-        console.log(data.length);
-        if (data) {
-            $("#waitlist").show();
-            for (var i = 0; i < data.length; i++) {
-                var div = $("<div>");
-                var h2 = $("<h2>");
-                div.addClass("well");
-                div.attr("id", "tableWell-0" + i + 1)
-
-                var span = $("<span>");
-                span.addClass("label").addClass("label-primary");
-                span.html(i+1);
-                h2.text(" | " + data[i].nameId);
-                h2.append(span)
-                div.append(h2)
-                $("#waitlist").append(div);
-                arrWaitList.push(data[i]);
-            }
-        }
-    });
-
-    $(".submit").click(function () {
-        event.preventDefault();
-        var newReservation = {
-            dinerName: $("#reserve-name").val().trim(),
-            phoneNumber: $("#reserve-phone").val().trim(),
-            email: $("#reserve-email").val().trim(),
-            nameId: $("#reserve-unique-id").val().trim().replace(/\s+/g, "").toLowerCase()
-        };
-        console.log(arrReservation);
-        console.log(arrWaitList);
-        if (arrReservation < 5) {
-            $.post("/api/addReservation", newReservation)
-                .then(function (data) {
-                    console.log(data);
-                    alert("Adding reservation...");
-                });
-        } else {
-            $.post("/api/addWaitList", newReservation)
-                .then(function (data) {
-                    console.log(data);
-                    alert("Adding waitlist...");
-                });
-        }
-        // Question: What does this code do??
-
-    })
-</script>
-
-
     </body>
 
     </html>
-
-     <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-</head>
-<body>
-  <div class="container">
-    <div class="jumbotron">
-      <h1 class="text-center"><span class="glyphicon glyphicon-fire"></span> Hot Restaurant</h1>
-      <hr>
-      <h2 class="text-center">We only have 5 tables! Book your seat before they all are gone!</h2>
-      <br>
-      <div class="text-center">
-        <a href="/tables"><button type="button" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list-alt"></span> View Tables</button></a>
-        <a href="/reserve"><button type="button" class="btn btn-lg btn-danger"><span class="glyphicon glyphicon-credit-card"></span> Make Reservation</button></a>
-      </div>
-    </div>
-    <footer class="footer">
-      <div class="container">
-        <p><a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API Wait List</a> | <a href="https://github.com/afhaque/HotRestaurant">GitHub Repo</a></p>
-      </div>
-    </footer>
-  </div>
-</body>
-</html>
