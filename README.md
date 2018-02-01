@@ -23,12 +23,12 @@ I deployed this program to heroku and the user can access it with the link https
 
 *the homepage that the user initially accesses looks like this*
 
-
+![2018-02-01 1](https://user-images.githubusercontent.com/30198872/35663756-e2a76c04-06ec-11e8-9556-43b07001c041.png)
 
 
 *these are some sreenshots of the survey the user will be given* (the second of these shows the alert the user will receive once the survey answers have been added to the database).
 
-![2018-02-01 1](https://user-images.githubusercontent.com/30198872/35663756-e2a76c04-06ec-11e8-9556-43b07001c041.png)
+
 
 ![2018-02-01 3](https://user-images.githubusercontent.com/30198872/35663763-e9f0c6fe-06ec-11e8-8abd-880684c3b56f.png)
 ![2018-02-01 4](https://user-images.githubusercontent.com/30198872/35663766-ecf7a50c-06ec-11e8-8fb9-2de47eaa09b8.png)
