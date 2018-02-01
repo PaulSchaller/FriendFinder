@@ -7,6 +7,7 @@ I deployed this program to heroku and the user can access it with the link https
  
 
 *my data file contains records like these*
+![2018-02-01 9](https://user-images.githubusercontent.com/30198872/35667144-8b419968-06fa-file11e8-9eab-cedfce1d8ab4.png)
 ![2018-02-01 2](https://user-images.githubusercontent.com/30198872/35663760-e6c39006-06ec-11e8-90ae-1829504621d4.png)
 ![2018-02-01 8](https://user-images.githubusercontent.com/30198872/35667138-8322470a-06fa-11e8-83e8-193941fb31e5.png)
 
@@ -25,4 +26,4 @@ I deployed this program to heroku and the user can access it with the link https
 ![2018-02-01 6](https://user-images.githubusercontent.com/30198872/35663772-f35ee860-06ec-11e8-8289-0aa478ae9a78.png)
 
 
-![2018-02-01 9](https://user-images.githubusercontent.com/30198872/35667144-8b419968-06fa-file11e8-9eab-cedfce1d8ab4.png)
+
