@@ -9,15 +9,15 @@ I deployed this program to heroku and the user can access it with the link https
 *my data file contains records like these*
 
 ![2018-02-01 6](https://user-images.githubusercontent.com/30198872/35663772-f35ee860-06ec-11e8-8289-0aa478ae9a78.png)
-
-![2018-02-01 9](https://user-images.githubusercontent.com/30198872/35667144-8b419968-06fa-file11e8-9eab-cedfce1d8ab4.png)
+![2018-02-01 7](https://user-images.githubusercontent.com/30198872/35663774-f6906bbc-06ec-11e8-99b5-0613e4b7b3ea.png)
 
 
 
 *the homepage that the user initially accesses looks like this*
-![2018-02-01 7](https://user-images.githubusercontent.com/30198872/35663774-f6906bbc-06ec-11e8-99b5-0613e4b7b3ea.png)
+
 ![2018-02-01 2](https://user-images.githubusercontent.com/30198872/35663760-e6c39006-06ec-11e8-90ae-1829504621d4.png)
 ![2018-02-01 8](https://user-images.githubusercontent.com/30198872/35667138-8322470a-06fa-11e8-83e8-193941fb31e5.png)
+![2018-02-01 9](https://user-images.githubusercontent.com/30198872/35667144-8b419968-06fa-file11e8-9eab-cedfce1d8ab4.png)
 
 
 *these are some sreenshots of the survey the user will be given*
@@ -31,6 +31,6 @@ I deployed this program to heroku and the user can access it with the link https
 
 *in the following two screenshots, the user enters their survey in the name of ##Beverly Johnson.*
 *Beverly's addition to the database is shown, along with the link to her photo she provided.
-
+![2018-02-01 9](https://user-images.githubusercontent.com/30198872/35668962-85a76968-0701-11e8-90a7-9cab513440b3.png)
 
 
