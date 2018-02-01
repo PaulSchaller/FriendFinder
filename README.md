@@ -17,7 +17,7 @@ I deployed this program to heroku and the user can access it with the link https
 ![2018-02-01 7](https://user-images.githubusercontent.com/30198872/35663774-f6906bbc-06ec-11e8-99b5-0613e4b7b3ea.png)
 
 
-
+*these are some sreenshots of the survey the user will be given*
 ![2018-02-01 1](https://user-images.githubusercontent.com/30198872/35663756-e2a76c04-06ec-11e8-9556-43b07001c041.png)
 
 ![2018-02-01 3](https://user-images.githubusercontent.com/30198872/35663763-e9f0c6fe-06ec-11e8-8abd-880684c3b56f.png)
