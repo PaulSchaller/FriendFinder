@@ -33,12 +33,12 @@ I deployed this program to heroku and the user can access it with the link https
 ![2018-02-01 3](https://user-images.githubusercontent.com/30198872/35663763-e9f0c6fe-06ec-11e8-8abd-880684c3b56f.png)
 ![2018-02-01 4](https://user-images.githubusercontent.com/30198872/35663766-ecf7a50c-06ec-11e8-8fb9-2de47eaa09b8.png)
 
-*the user will receive the results from the analysis with a screen that will allow the user link onto a photo of their friend match.*
+*the user will receive the results from the analysis with a screen that will also allow the user to link onto a photo of their friend match.*
 
 ![2018-02-01 8](https://user-images.githubusercontent.com/30198872/35667138-8322470a-06fa-11e8-83e8-193941fb31e5.png)
 
-*in the following two screenshots, the user enters their survey in the name of ##Beverly Johnson.*
-*Beverly's addition to the database is shown, along with the link to her photo she provided.
+*in the following two screenshots, the user enters their survey in the name of Beverly Johnson.*
+*Beverly's addition to the database is shown, along with the link to her photo that she provided.
 
 ![2018-02-01 9](https://user-images.githubusercontent.com/30198872/35668962-85a76968-0701-11e8-90a7-9cab513440b3.png)
 ![2018-02-01 7](https://user-images.githubusercontent.com/30198872/35663774-f6906bbc-06ec-11e8-99b5-0613e4b7b3ea.png)
