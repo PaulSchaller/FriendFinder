@@ -26,7 +26,7 @@ I deployed this program to heroku and the user can access it with the link https
 ![2018-02-01 9](https://user-images.githubusercontent.com/30198872/35667144-8b419968-06fa-file11e8-9eab-cedfce1d8ab4.png)
 
 
-*these are some sreenshots of the survey the user will be given*
+*these are some sreenshots of the survey the user will be given* (the second of these shows the alert the user will receive once the survey answers have been added to the database).
 
 ![2018-02-01 1](https://user-images.githubusercontent.com/30198872/35663756-e2a76c04-06ec-11e8-9556-43b07001c041.png)
 
