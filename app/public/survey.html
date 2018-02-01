@@ -1,6 +1,7 @@
 <!DOCTYPE html>
     <html>
 
+<!--added links and bootstrap for my html page for the survey-->
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,6 +11,7 @@
         <script src="https://code.jquery.com/jquery.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
+<!--added some css styling for the match result page/pop-up-->
         <style>
            
             #resultsContainer {
@@ -27,7 +29,10 @@
 
     </head>
 
+<!--starting the body of the program.-->
     <body>
+<!--my survey page will have entry fields for name and photo and then 10
+questions-->    
     <div class="container" id = "mainContainer">
     <h2>Survey Questions</h2>
     <br>
@@ -143,11 +148,15 @@
     </div>
                 <br><br>
 
+<!--I end the survey html with a submit button which submits the answers to
+the survey for analysis-->
     <button type="button" class="btn btn-lg" id="submit" style="background-color: blue">SUBMIT</button>
     </form>
   </div>
 
 
+<!--this is the html for the pop-up window that shows up with the 
+results of the survey analysis-->
 <div class="container" id = "resultsContainer">
     <div class = "row">
     <h1><strong>Best Match</strong></h1>
@@ -182,13 +191,22 @@
   </div>
  
 
+<!--I now include the javasript relating to the survey in the body of the 
+survey html page-->
 <script type="text/javascript">
+   //I declare a global array that will be used to store the friends data
+   //once this data is retrieved for the friends.js file  
    var arrFriends = [];
 
+    //the submit button is the powerhouse of the program
+    //the submit button will execute the program through to the results
+    //window
     $("#submit").on("click", function(event) {
 
       event.preventDefault();
 
+      //if any survey question is not answered, the user will be alerted
+      // of the problem until the problem is corrected
       if ( !$("input[name=question1]:checked").val()  ||
            !$("input[name=question2]:checked").val()  ||
            !$("input[name=question3]:checked").val()  ||
@@ -206,6 +224,7 @@
 
 
       // Here we grab the survey form elements
+      //the form elements are saved in a variable newFriend
       var newFriend = {
         name: $("#name").val().trim(),
         photo: $("#photo").val().trim(),
@@ -216,15 +235,17 @@
         scoreInput = $("input[name=question"+i+"]:checked").val();
         newFriend.scores.push(scoreInput);
       };
-      console.log(newFriend);
-      //post new entry into the friends.js database (storage)
+
+
+      //a new entry is posted into the friends.js database (storage)
       $.post("/api/friends", newFriend,
         function(data) {
           if (data) {
             alert("Yay! You are added to the database!");
           }
         
-        // Clear the form when submitting
+
+        // the survey form is then cleared
           $("#name").val("");
           $("#photo").val("");
           $("input[name=question1]:checked").val("");
@@ -240,77 +261,50 @@
 
         });
 
+      //a function call to get the data from the friend.js file
       getFriendData(newFriend);
-      console.log(newFriend);
 
     });
 
- console.log("123");
-
-//GET function. get the data from friends.js and put it into "arrFriends"   
-
+  
+//this is the function that was just called
+//this function is a GET function that retrieves data from a file and
+//stores this data in an array arrFriends
     function getFriendData(newFriend) {
 
 
     $.get("/api/friends", function (friends) {
-        console.log(friends);
-        console.log(newFriend);
-        console.log(friends.length);
         arrFriends = friends;
-        console.log(arrFriends);
-              console.log(arrFriends);
-      console.log(friends);
-      calculateFriendMatch(arrFriends, newFriend);
+        //the function to calculate the results is called from this function
+        //this function call passes arrFriends and newFriend to the function
+        calculateFriendMatch(arrFriends, newFriend);
+        });
+      };
 
-      });
-  };
-
-    //AN OPTION B.  
-    //     var currentURL = window.location.origin;
-    // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
-    //$.ajax({ url: currentURL + "/api/friends", method: "GET" })
-    //.then(function(friends) {
-    // Here we are logging the URL so we have access to it for troubleshooting
-    //console.log("------------------------------------");
-    //console.log("URL: " + currentURL + "/api/tables");
-    //console.log("------------------------------------");
-    //console.log(friends);
-    //console.log("------------------------------------");
-    //for (var i = 0; i < friends.length; i++) {
-          //arrFriends.push(friends[i]);}
 
 
     function calculateFriendMatch(arrFriends, newFriend) {
-      console.log("calculating");
-console.log(newFriend);
-console.log("NewFriend Present");
-       var accumulatedDifference = [];
-       var a = 0;
-       var leastDifferenceAmount = 0;
- console.log[arrFriends];
- console.log("inside the castle.");
- console.log(arrFriends.length - 1);
 
-console.log(leastDifferenceAmount);
+      var accumulatedDifference = [];
+      var a = 0;
+      var leastDifferenceAmount = 0;
 
+      //for loop to initialize a variable (array)
       for (var i = 0; i < arrFriends.length - 1; i++) {
+          accumulatedDifference[i] = 0;
+          }
 
-accumulatedDifference[i] = 0;
-}
-
-       for (var i = 0; i < arrFriends.length - 1; i++) {
-
+      //for loop to determine the amounts of differences in the survey answers
+      //between the participants
+      for (var i = 0; i < arrFriends.length - 1; i++) {
           for (var g = 0; g < 10; g++) {
             var difference = Math.abs(arrFriends[i].scores[g] - newFriend.scores[g]);
               accumulatedDifference[i] += difference;
             }   
         }
 
-      for (var i = 0; i < arrFriends.length - 1; i++) {
-
-console.log(accumulatedDifference[i] + "i = "  + i);
-}
-
+      //the person with the least amount of difference in the survey
+      //answers is determined 
       if (accumulatedDifference[0] < accumulatedDifference[1]) {
           a = 0;
           leastDifferenceAmount = accumulatedDifference[0];
@@ -319,25 +313,22 @@ console.log(accumulatedDifference[i] + "i = "  + i);
           a = 1;
           leastDifferenceAmount = accumulatedDifference[1];
         }
-console.log(leastDifferenceAmount + "leastDifferenceAmount");
-console.log(a);
-console.log("aaaaaaa");
+
       for (var i = 2; i < arrFriends.length - 1; i++) {
         if (accumulatedDifference[i] < leastDifferenceAmount)
           {
             accumulatedDifference[i] = leastDifferenceAmount;
             a = i;
-          }
+            }
        }
-console.log(a);
 
-       var bestMatch = arrFriends[a];
 
-      console.log(bestMatch);
+      //the best match has been calculated and the result is stored
+      //in arrFriends[a] 
+      var bestMatch = arrFriends[a];
     
-
-     $("#nameOfBestMatch").text(bestMatch.name);
-     $("#photoOfBestMatch").attr(bestMatch.photo);
+      //the result is loaded onto the DOM results page
+      $("#nameOfBestMatch").text(bestMatch.name);
 
       $("#close").on("click", function(event) {
           event.preventDefault();
@@ -345,12 +336,16 @@ console.log(a);
           $('#mainContainer').show();
         });
 
-
-      
-$('#resultsContainer').show();
-$('#mainContainer').hide();
+      //the results window is displayed and the survey page is hidden
+      $('#resultsContainer').show();
+      $('#mainContainer').hide();
     }
-  //   
-</script>
+  
+    //the preceding function definition concludes the script section for this
+    //html page  
+    </script>
+
+<!--the page is closed up-->
 </body>
+
 </html>
